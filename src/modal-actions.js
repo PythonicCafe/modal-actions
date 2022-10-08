@@ -68,9 +68,7 @@ export class ModalActions {
           let result = { action: "answered", answerResult };
           let response;
           const modalSubmit = event.target.closest(".ma-modal")
-            ? event.target
-                .closest(".ma-modal")
-                .querySelector(".modal-submit")
+            ? event.target.closest(".ma-modal").querySelector(".modal-submit")
             : event.target.querySelector(".modal-submit");
           try {
             response = await this._options.callback(result);

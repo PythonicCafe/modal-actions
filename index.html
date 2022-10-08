@@ -13,16 +13,16 @@
       <div class="theme-toggle">
         <span onclick="toggleTheme()">
           <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-circle-half"
-              viewBox="0 0 16 16"
-              >
-              <path
-                  d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"
-                  />
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-circle-half"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"
+            />
           </svg>
         </span>
       </div>
@@ -36,10 +36,16 @@
         id="font-size"
         title="Mudar tamanho da fonte"
       />
-      <button class="ma-btn" onclick="window.askYesNo()">Ask YesNo question</button>
-      <button class="ma-btn" onclick="window.askQuestion()">Ask question</button>
+      <button class="ma-btn" onclick="window.askYesNo()">
+        Ask YesNo question
+      </button>
+      <button class="ma-btn" onclick="window.askQuestion()">
+        Ask question
+      </button>
       <button class="ma-btn" onclick="window.message()">Message</button>
-      <button class="ma-btn" onclick="window.messageTable()">Message Table</button>
+      <button class="ma-btn" onclick="window.messageTable()">
+        Message Table
+      </button>
     </div>
 
     <div id="my-container">
@@ -101,10 +107,9 @@
         await window.modal.showMessage(
           "Title",
           `<div class="ma-modal__body">
-                <a class="ma-modal__link" href='javascript:void(0);' onclick='window.messageExtra()'>Lorem ipsum 1</a>
-                dolor sit amet, consectetur adipiscing elit. Phasellus gravida id leo pellentesque
-                finibus.
-              </div>`,
+            <a class="ma-modal__link" href='javascript:void(0);' onclick='window.messageExtra()'>Lorem ipsum 1</a>
+            dolor sit amet, consectetur adipiscing elit. Phasellus gravida id leo pellentesque finibus.
+           </div>`,
           {
             callback: async function (data) {
               log(`Answer: ${JSON.stringify(data)}`);
@@ -118,12 +123,11 @@
         log("Message extra");
         await window.modal.showMessage(
           "Title Extra Modal 1",
-          `
-              <div class="ma-modal__body">
-                <a class="ma-modal__link" href='javascript:void(0);' onclick='window.messageExtra2()'>Lorem ipsum 2</a>
-                dolor sit amet, consectetur adipiscing elit. Phasellus gravida id leo pellentesque finibus.
-              </div>
-              `,
+          `<div class="ma-modal__body">
+              <a class="ma-modal__link" href='javascript:void(0);' onclick='window.messageExtra2()'>Lorem ipsum 2</a>
+              dolor sit amet, consectetur adipiscing elit. Phasellus gravida id leo pellentesque finibus.
+            </div>
+            `,
           {
             callback: async function (data) {
               log(`Answer: ${JSON.stringify(data)}`);
@@ -138,12 +142,11 @@
         log("Message extra");
         await window.modal.showMessage(
           "Title Extra Modal 2",
-          `
-              <div class="ma-modal__body">
-                Lorem ipsum dolor 2 sit amet, consectetur adipiscing elit.
-                Phasellus gravida id leo pellentesque finibus.
-              </div>
-              `,
+          `<div class="ma-modal__body">
+              Lorem ipsum dolor 2 sit amet, consectetur adipiscing elit.
+              Phasellus gravida id leo pellentesque finibus.
+            </div>
+            `,
           {
             callback: async function (data) {
               log(`Answer: ${JSON.stringify(data)}`);
@@ -158,8 +161,8 @@
         log("Message extra");
         const element = [];
         for (let index = 0; index < 25; index++) {
-                   element.push(
-                   `<tr> <td>Body content ${index}</td> <td>Body content ${
+          element.push(
+            `<tr> <td>Body content ${index}</td> <td>Body content ${
               index + 1
             }</td> </tr>`
           );
