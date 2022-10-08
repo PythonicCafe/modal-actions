@@ -1,3 +1,3 @@
-import { Modal } from "./modal";
+import { ModalActions } from "./modal-actions";
 
-export { Modal };
+export { ModalActions };

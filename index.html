@@ -54,7 +54,7 @@
     </div>
 
     <script type="module">
-      import { Modal } from "./dist/modal-actions.min.js";
+      import { ModalActions } from "./dist/modal-actions.min.js";
 
       // Log custom events raised by Modal
       const container = document.querySelector("#my-container");
@@ -66,7 +66,7 @@
       );
       window.runTest = async function () {
         log("Creating instance");
-        window.modal = new Modal("#my-container");
+        window.modal = new ModalActions("#my-container");
       };
 
       window.askYesNo = async function () {

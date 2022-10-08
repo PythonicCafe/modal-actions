@@ -1,6 +1,6 @@
 import nunjucks from "nunjucks";
 
-export class Modal {
+export class ModalActions {
   constructor(selector) {
     /* This class will always append a child to the selector above, and
      * won't change any of the selector's children (except for its own
