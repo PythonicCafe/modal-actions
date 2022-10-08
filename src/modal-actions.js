@@ -360,7 +360,9 @@ export class ModalActions {
                     <h1 class="ma-modal__title">{{ title }}</h1>
                     {% if headerExtraButtons %}
                         {% for button in headerExtraButtons %}
-                            <button title="{{ button.title }}" class="ma-modal__extra-header {{ button.class }}"></button>
+                            <button title="{{ button.title }}"
+                              class="ma-modal__extra-header {{ button.class }}"
+                            ></button>
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -401,7 +403,9 @@ export class ModalActions {
             {% if html %}{{ message|safe }}{% else %}{{ message }}{% endif %}
             <form>
               {% if label %}<label for="ma-answer">{{ label }}</label>{% endif %}
-              <input type="text" name="ma-answer" id="ma-answer" class="ma-answer" {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} maxlength="250" />
+              <input type="text" name="ma-answer" id="ma-answer" class="ma-answer"
+                {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} maxlength="250"
+              />
             </form>
           </div>
           <div class="ma-modal__footer">
