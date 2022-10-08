@@ -2,7 +2,7 @@
   --c-ma-bg: #fff;
   --c-ma-border: #dee2e6;
   --c-ma-text: #333;
-  --c-ma-link: #0000ee; 
+  --c-ma-link: #0000ee;
 
   --c-ma-primary: #0085a6;
   --c-ma-secondary: #ddd;
@@ -18,13 +18,17 @@
 
   // Padding
   --p-ma-btn: .375rem .75rem;
+
+  // Icons
+  --i-ma-close: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' /></svg>");
+  --i-ma-back: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'/></svg>");
 }
 
 .dark {
   --c-ma-bg: #3b3b3b;
   --c-ma-border: #777a7c;
   --c-ma-text: #f7f7f7;
-  --c-ma-link: #00beee; 
+  --c-ma-link: #00beee;
 
   --c-ma-primary: #eee;
   --c-ma-secondary: #8b8b8b;
@@ -87,7 +91,7 @@
   }
 
   &__link {
-    color: var(--modal-color-link);
+    color: var(--c-ma-link);
   }
 
   &__header {
@@ -98,7 +102,7 @@
     border-top-right-radius: calc(0.3rem - 1px);
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
   }
 
   &__title {
@@ -130,10 +134,10 @@
   &__close,
   &__back,
   &__extra-header {
+    position: relative;
     transition: color 0.3s;
     &:not(.ma-modal__button) {
       color: var(--modal-color-header-btn);
-      background-color: var(--ugb-color-bg-sidenav);
       cursor: pointer;
     }
     &:hover {
@@ -141,6 +145,27 @@
     }
     border: none;
   }
+
+  &__close,
+  &__back {
+    mask-repeat: no-repeat;
+    background-color: var(--c-ma-text);
+    padding: .55rem;
+    &:hover {
+      background-color: var(--c-ma-primary);
+    }
+  }
+
+  &__close {
+    -webkit-mask-image: var(--i-ma-close);
+    mask-image: var(--i-ma-close);
+  }
+
+  &__back {
+    -webkit-mask-image: var(--i-ma-back);
+    mask-image: var(--i-ma-back);
+  }
+
 }
 
 // Buttons
@@ -179,6 +204,20 @@
       border-color:  var(--c-ma-secondary);
       cursor: pointer;
     }
+  }
+}
+
+// Input
+
+.ma-answer {
+  padding: .5rem 1rem;
+  margin: 1rem 0rem;
+  border-radius: .25rem;
+  border: 2px solid var(--c-ma-secondary);
+  background-color: var(--c-ma-bg);
+  color: var(--c-ma-text);
+  &::placeholder{
+    color: var(--c-ma-text);
   }
 }
 

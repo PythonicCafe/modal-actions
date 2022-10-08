@@ -324,7 +324,7 @@ export class Modal {
       placeholder: placeholder,
     });
     this._show(renderedHtml, callback, onLoad);
-    this.container.querySelector("input.modal-answer").focus();
+    this.container.querySelector("input.ma-answer").focus();
   }
 
   askYesNo(
@@ -362,21 +362,15 @@ export class Modal {
                     <h1 class="ma-modal__title">{{ title }}</h1>
                     {% if headerExtraButtons %}
                         {% for button in headerExtraButtons %}
-                            <button title="{{ button.title }}" class="ma-modal__extra-header {{ button.class }}">
-                                <i class="fas {{ button.icon }}"></i>
-                            </button>
+                            <button title="{{ button.title }}" class="ma-modal__extra-header {{ button.class }}"></button>
                         {% endfor %}
                     {% endif %}
                 </div>
 
                 {% if extra %}
-                    <button class="ma-modal__back">
-                        <i class="fas fa-arrow-left"></i>
-                    </button>
+                    <button class="ma-modal__back"></button>
                 {% elif closeWhenClickOutside %}
-                    <button class="ma-modal__close">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <button class="ma-modal__close"></button>
                 {% endif %}
             </div>
             {{ message|safe }}
@@ -403,13 +397,13 @@ export class Modal {
         <div class="ma-modal {{ modal_size }}">
           <div class="ma-modal__header">
             <h1 class="ma-modal__title">{{ title }}</h1>
-            <button class="ma-modal__close"><i class="fas fa-times"></i></button>
+            <button class="ma-modal__close"></button>
           </div>
           <div class="ma-modal__body">
             {% if html %}{{ message|safe }}{% else %}{{ message }}{% endif %}
             <form>
-              {% if label %}<label for="modal-answer">{{ label }}</label>{% endif %}
-              <input type="text" name="modal-answer" id="modal-answer" class="modal-answer" {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} maxlength="250" />
+              {% if label %}<label for="ma-answer">{{ label }}</label>{% endif %}
+              <input type="text" name="ma-answer" id="ma-answer" class="ma-answer" {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} maxlength="250" />
             </form>
           </div>
           <div class="ma-modal__footer">
@@ -426,7 +420,7 @@ export class Modal {
         <div class="ma-modal {{ modal_size }}">
           <div class="ma-modal__header">
             <h1 class="ma-modal__title">{{ title }}</h1>
-            <button class="ma-modal__close"><i class="fas fa-times"></i></button>
+            <button class="ma-modal__close"></button>
           </div>
           <div class="ma-modal__body">
             {% if html %} {{ message|safe }} {% else %} {{ message }} {% endif %}
