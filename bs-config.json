@@ -1,6 +1,6 @@
 {
   "injectChanges": false,
-  "files": ["./*.{html,css,js,scss}", "./dist/*.{js}", "./css/*.{css}"],
+  "files": ["./src/*.{html,css,js,scss}", "./*.{html,css,js,scss}", "./dist/*.{js}", "./css/*.{css}"],
   "watchOptions": { "ignored": "node_modules" },
   "server": {
     "baseDir": "./"
