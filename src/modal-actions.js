@@ -143,7 +143,7 @@ export class ModalActions {
     if (
       (this._options.closeWhenClickOutside === true &&
         target == mainContainer) ||
-      (closest && closest.classList.contains("ma-modal__close"))
+      (closest && closest.classList.contains("ma-close"))
     ) {
       // Clicked on "close" button or outside modal (in blurred area)
       action = "closed";
@@ -165,10 +165,10 @@ export class ModalActions {
       await this._callbackExecute(closest, action);
       return;
     } else if (
-      // Clicked on anything in modal thats not ma-modal__close or ma-btn
+      // Clicked on anything in modal thats not ma-close or ma-btn
       !closest ||
       (!this._options.closeWhenClickOutside && target == mainContainer) ||
-      (!closest.classList.contains("ma-modal__close") &&
+      (!closest.classList.contains("ma-close") &&
         !closest.classList.contains("ma-btn"))
     ) {
       return;
@@ -301,6 +301,7 @@ export class ModalActions {
   }
 
   extraButtons(headerExtraButtons) {
+    const self = this;
     for (let index = 0; index < headerExtraButtons.length; index++) {
       const element = headerExtraButtons[index];
       const button = self
@@ -394,13 +395,13 @@ export class ModalActions {
     let template = `
         <div class="ma-modal {{ modal_size }}">
           <div class="ma-modal__header">
-            <div class="header-elements-left">
+            <div class="ma-modal__header-elements-left">
               <h1 class="ma-modal__title">{{ title }}</h1>
               {% if header_extra_buttons %}
                   {% for button in header_extra_buttons %}
                     <button title="{{ button.title }}"
                       class="ma-modal__extra-header {{ button.class }}"
-                    ></button>
+                    >{{ button.label|safe }}</button>
                   {% endfor %}
               {% endif %}
             </div>
@@ -409,7 +410,7 @@ export class ModalActions {
                 <button class="ma-modal__back" title="Clique para retornar ao modal anterior"></button>
               {% endif %}
               {% if close_when_click_outside %}
-                <button class="ma-modal__close" title="Clique para fechar modal"></button>
+                <button class="ma-modal__close ma-close" title="Clique para fechar modal"></button>
               {% endif %}
             </div>
           </div>
@@ -435,7 +436,7 @@ export class ModalActions {
         <div class="ma-modal {{ modal_size }}">
           <div class="ma-modal__header">
             <h1 class="ma-modal__title">{{ title }}</h1>
-            <button class="ma-modal__close"></button>
+            <button class="ma-modal__close ma-close"></button>
           </div>
           <div class="ma-modal__body">
             {% if html %}{{ message|safe }}{% else %}{{ message }}{% endif %}
@@ -447,7 +448,7 @@ export class ModalActions {
             </form>
           </div>
           <div class="ma-modal__footer">
-            <button class="ma-btn ma-btn--secondary">Cancelar</button>
+            <button class="ma-btn ma-btn--secondary ma-close">Cancelar</button>
             <button class="ma-btn">Ok</button>
           </div>
         </div>
@@ -460,7 +461,7 @@ export class ModalActions {
         <div class="ma-modal {{ modal_size }}">
           <div class="ma-modal__header">
             <h1 class="ma-modal__title">{{ title }}</h1>
-            <button class="ma-modal__close"></button>
+            <button class="ma-modal__close ma-close"></button>
           </div>
           <div class="ma-modal__body">
             {% if html %} {{ message|safe }} {% else %} {{ message }} {% endif %}

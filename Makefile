@@ -1,6 +1,6 @@
 all: watch
 
-clean: 
+clean:
 	rm -rf dist/
 
 watch:
@@ -8,6 +8,7 @@ watch:
 
 bundle:
 	docker compose -f docker-compose.yml -f build.yml up
+	yarn pack
 
 release: clean bundle
 	yarn publish
