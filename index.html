@@ -124,8 +124,13 @@
         await window.modal.showMessage(
           "Title Extra Modal 1",
           `<div class="ma-modal__body">
+              <div id="content_1" class="tab-content" data-title="Tab 1">
+              Test tab 1
               <a class="ma-modal__link" href='javascript:void(0);' onclick='window.messageExtra2()'>Lorem ipsum 2</a>
               dolor sit amet, consectetur adipiscing elit. Phasellus gravida id leo pellentesque finibus.
+              </div>
+              <div id="content_2" class="tab-content" data-title="Tab 2">Test tab 2</div>
+              <div id="content_3" class="tab-content" data-title="Tab 3">Test tab 3</div>
             </div>
             `,
           {
@@ -134,6 +139,7 @@
             },
             html: true,
             extra: true,
+            tabs: true,
           }
         );
       };
@@ -162,9 +168,10 @@
         const element = [];
         for (let index = 0; index < 25; index++) {
           element.push(
-            `<tr> <td>Body content ${index}</td> <td>Body content ${
-              index + 1
-            }</td> </tr>`
+            `<tr>
+                <td>Body content ${index}</td>
+                <td>Body content ${index + 1}</td>
+              </tr>`
           );
         }
         await window.modal.showMessage(

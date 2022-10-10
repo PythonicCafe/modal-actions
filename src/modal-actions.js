@@ -197,9 +197,9 @@ export class ModalActions {
     this._options = {};
   }
 
-  _show(html, callback, onLoad, extra, headerExtraButtons) {
-    let self = this,
-      div;
+  _show(html, callback, onLoad, extra, headerExtraButtons, tabs) {
+    const self = this;
+    let div;
 
     if (extra) {
       // Modal already exists, extra content
@@ -226,50 +226,87 @@ export class ModalActions {
         onLoad(this._getModalContainer());
       }
 
-      return;
-    }
-
-    if (this._getModalContainer()) {
-      // Modal already exists, overwrite
-      div = this._getModalContainer();
     } else {
-      div = document.createElement("div");
-      div.classList = "ma-container";
-      div.style.display = "block";
-      div.style.animation = "fade-in .4s";
-      div.tabIndex = "-1";
-      div.addEventListener("click", async function (event) {
-        await self._onClick(event);
-      });
-      div.addEventListener("keyup", async function (event) {
-        await self._onKeyUp(event);
-      });
-      div.addEventListener("keydown", async function (event) {
-        await self._onKeyDown(event);
-      });
-    }
 
-    div.innerHTML = html;
-    this._options.callback = callback;
-    this.container.appendChild(div);
-
-    // Focus on close button if closeWhenClickOutside
-    this._options.closeWhenClickOutside
-      ? this._getModalContainer().querySelector("button").focus()
-      : this._getModalContainer().focus();
-
-    this._getModalContainer().dispatchEvent(this.modalOpened);
-    if (onLoad) {
-      onLoad(div);
-    }
-    if (headerExtraButtons) {
-      for (let index = 0; index < headerExtraButtons.length; index++) {
-        const element = headerExtraButtons[index];
-        const button = self
-          ._getModalContainer()
-          .querySelector(`.${element.class}`);
-        button.addEventListener("click", element.action);
+      if (this._getModalContainer()) {
+        // Modal already exists, overwrite
+        div = this._getModalContainer();
+      } else {
+        div = document.createElement("div");
+        div.classList = "ma-container";
+        div.style.display = "block";
+        div.style.animation = "fade-in .4s";
+        div.tabIndex = "-1";
+        div.addEventListener("click", async function (event) {
+          await self._onClick(event);
+        });
+        div.addEventListener("keyup", async function (event) {
+          await self._onKeyUp(event);
+        });
+        div.addEventListener("keydown", async function (event) {
+          await self._onKeyDown(event);
+        });
       }
+
+      div.innerHTML = html;
+      this._options.callback = callback;
+      this.container.appendChild(div);
+
+      // Focus on close button if closeWhenClickOutside
+      this._options.closeWhenClickOutside
+        ? this._getModalContainer().querySelector("button").focus()
+        : this._getModalContainer().focus();
+
+      this._getModalContainer().dispatchEvent(this.modalOpened);
+
+      if (onLoad) {
+        onLoad(div);
+      }
+    }
+
+    if (headerExtraButtons) {
+      this.extraButtons(headerExtraButtons);
+    }
+
+    if (tabs) {
+      const activeClass = "ma-nav__tab--active";
+      const actualModal = self._getModalContainer().querySelector(".ma-modal:not([style*='display: none'])");
+      const tabs = actualModal.querySelectorAll(".tab-content");
+
+      for (let i = 0; i < tabs.length; i++) {
+        const element = tabs[i];
+        element.classList.add("hidden");
+        const li = document.createElement("li");
+        li.innerHTML = `<button id="t-${element.id}" class="ma-nav__tab">${element.dataset.title}</button>`;
+        actualModal.querySelector(".ma-nav__list").appendChild(li);
+
+        const tab = actualModal.querySelector(`#t-${element.id}`);
+
+        tab.addEventListener("click", function (e) {
+          const lastTabActive = actualModal.querySelector(`.${activeClass}`);
+          lastTabActive.classList.remove(activeClass);
+
+          e.target.classList.add(activeClass);
+
+          actualModal.querySelector(".tab-content:not(.hidden)").classList.add("hidden");
+          actualModal.querySelector(
+            "#" + e.target.id.substr(2, e.target.id.length-1)).classList.remove("hidden");
+        });
+      }
+
+      // Active first tab
+      actualModal.querySelector(".ma-nav__tab").classList.add(activeClass);
+      actualModal.querySelector(".tab-content").classList.remove("hidden");
+    }
+  }
+
+  extraButtons(headerExtraButtons) {
+    for (let index = 0; index < headerExtraButtons.length; index++) {
+      const element = headerExtraButtons[index];
+      const button = self
+        ._getModalContainer()
+        .querySelector(`.${element.class}`);
+      button.addEventListener("click", element.action);
     }
   }
 
@@ -277,49 +314,51 @@ export class ModalActions {
     title,
     message,
     {
-      callback = undefined,
+      callback,
       closeWhenClickOutside = true,
       modalSize = "ma-modal--m",
       html = false,
-      onLoad = undefined,
+      onLoad,
       extra = false,
-      headerExtraButtons = undefined,
+      headerExtraButtons,
+      tabs,
     } = {}
   ) {
     this._options.closeWhenClickOutside = closeWhenClickOutside;
     let renderedHtml = this.getMessageTemplate().render({
-      closeWhenClickOutside: closeWhenClickOutside,
-      title: title,
-      message: message,
+      close_when_click_outside: closeWhenClickOutside,
+      title,
+      message,
       modal_size: modalSize,
-      html: html,
-      extra: extra,
-      headerExtraButtons: headerExtraButtons,
+      html,
+      extra,
+      header_extra_buttons: headerExtraButtons,
+      tabs,
     });
-    this._show(renderedHtml, callback, onLoad, extra, headerExtraButtons);
+    this._show(renderedHtml, callback, onLoad, extra, headerExtraButtons, tabs);
   }
 
   askQuestion(
     title,
     message,
     {
-      callback = undefined,
+      callback,
       closeWhenClickOutside = true,
       modalSize = "ma-modal--m",
       html = false,
-      onLoad = undefined,
-      label = null,
-      placeholder = null,
+      onLoad,
+      label,
+      placeholder,
     } = {}
   ) {
     this._options.closeWhenClickOutside = closeWhenClickOutside;
     let renderedHtml = this.getQuestionTemplate().render({
-      title: title,
-      message: message,
+      title,
+      message,
       modal_size: modalSize,
-      html: html,
-      label: label,
-      placeholder: placeholder,
+      html,
+      label,
+      placeholder,
     });
     this._show(renderedHtml, callback, onLoad);
     this.container.querySelector("input.ma-answer").focus();
@@ -329,13 +368,13 @@ export class ModalActions {
     title,
     message,
     {
-      callback = undefined,
+      callback,
       closeWhenClickOutside = true,
       modalSize = "ma-modal--m",
       html = false,
-      onLoad = undefined,
-      buttonYesLabel = undefined,
-      buttonNoLabel = undefined,
+      onLoad,
+      buttonYesLabel,
+      buttonNoLabel,
     } = {}
   ) {
     this._options.closeWhenClickOutside = closeWhenClickOutside;
@@ -344,8 +383,8 @@ export class ModalActions {
       message: message,
       modal_size: modalSize,
       html: html,
-      buttonYesLabel: buttonYesLabel,
-      buttonNoLabel: buttonNoLabel,
+      button_yes_label: buttonYesLabel,
+      button_no_label: buttonNoLabel,
     });
     this._show(renderedHtml, callback, onLoad);
     this._getModalContainer().querySelector("[data-answer='yes']").focus();
@@ -354,37 +393,36 @@ export class ModalActions {
   getMessageTemplate() {
     let template = `
         <div class="ma-modal {{ modal_size }}">
-          {% if html %}
-            <div class="ma-modal__header">
-                <div class="header-elements-left">
-                    <h1 class="ma-modal__title">{{ title }}</h1>
-                    {% if headerExtraButtons %}
-                        {% for button in headerExtraButtons %}
-                            <button title="{{ button.title }}"
-                              class="ma-modal__extra-header {{ button.class }}"
-                            ></button>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-
-                {% if extra %}
-                    <button class="ma-modal__back"></button>
-                {% elif closeWhenClickOutside %}
-                    <button class="ma-modal__close"></button>
-                {% endif %}
+          <div class="ma-modal__header">
+            <div class="header-elements-left">
+              <h1 class="ma-modal__title">{{ title }}</h1>
+              {% if header_extra_buttons %}
+                  {% for button in header_extra_buttons %}
+                    <button title="{{ button.title }}"
+                      class="ma-modal__extra-header {{ button.class }}"
+                    ></button>
+                  {% endfor %}
+              {% endif %}
             </div>
+            <div class="ma-modal__header-btn-container">
+              {% if extra %}
+                <button class="ma-modal__back" title="Clique para retornar ao modal anterior"></button>
+              {% endif %}
+              {% if close_when_click_outside %}
+                <button class="ma-modal__close" title="Clique para fechar modal"></button>
+              {% endif %}
+            </div>
+          </div>
+          {% if tabs %}
+            <div class="ma-nav">
+              <ul class="ma-nav__list"></ul>
+            </div>
+          {% endif %}
+          {% if html %}
             {{ message|safe }}
           {% else %}
-            <div class="ma-modal__header">
-                <h1 class="ma-modal__title">{{ title }}</h1>
-                {% if extra %}
-                    <button class="ma-modal__back"><i class="fas fa-arrow-left"></i></button>
-                {% else %}
-                    <button class="ma-modal__close"><i class="fas fa-times"></i></button>
-                {% endif %}
-            </div>
             <div class="ma-modal__body">
-                {{ message }}
+              {{ message }}
             </div>
           {% endif %}
         </div>
@@ -409,8 +447,8 @@ export class ModalActions {
             </form>
           </div>
           <div class="ma-modal__footer">
-            <button class="ma-btn">Ok</button>
             <button class="ma-btn ma-btn--secondary">Cancelar</button>
+            <button class="ma-btn">Ok</button>
           </div>
         </div>
         `;
@@ -428,11 +466,11 @@ export class ModalActions {
             {% if html %} {{ message|safe }} {% else %} {{ message }} {% endif %}
           </div>
           <div class="ma-modal__footer">
-            <button class="ma-btn" data-answer="yes">
-                {% if buttonYesLabel %}{{ buttonYesLabel }}{% else %}Sim{% endif %}
-            </button>
             <button class="ma-btn ma-btn--secondary" data-answer="no">
-                {% if buttonNoLabel %}{{ buttonNoLabel }}{% else %}Não{% endif %}
+                {% if button_no_label %}{{ button_no_label }}{% else %}Não{% endif %}
+            </button>
+            <button class="ma-btn" data-answer="yes">
+                {% if button_yes_label %}{{ button_yes_label }}{% else %}Sim{% endif %}
             </button>
           </div>
         </div>

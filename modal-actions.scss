@@ -1,17 +1,19 @@
 :root {
   --c-ma-bg: #fff;
   --c-ma-border: #dee2e6;
-  --c-ma-text: #333;
-  --c-ma-link: #0000ee;
-
-  --c-ma-primary: #0085a6;
-  --c-ma-secondary: #ddd;
-  --c-ma-btn: #fff;
-  --c-ma-btn-bg: var(--c-ma-primary);
+  --c-ma-btn-bg-disabled: var(--c-ma-dark);
   --c-ma-btn-bg-hover: #00738f;
   --c-ma-btn-bg-secondary: var(--c-ma-secondary);
+  --c-ma-btn-bg: var(--c-ma-primary);
   --c-ma-btn-disabled: #ccc;
-  --c-ma-btn-bg-disabled: var(--c-ma-dark);
+  --c-ma-btn: #fff;
+  --c-ma-link: #0000ee;
+  --c-ma-nav-bg: #f9faf9;
+  --c-ma-nav-tab-bg: var(--c-ma-bg);
+  --c-ma-primary: #0085a6;
+  --c-ma-secondary: #f0f0ea;
+  --c-ma-text: #333;
+
 
   // Font family
   --f-ma: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -29,17 +31,18 @@
 .dark {
   --c-ma-bg: #3b3b3b;
   --c-ma-border: #777a7c;
-  --c-ma-text: #f7f7f7;
-  --c-ma-link: #00beee;
-
-  --c-ma-primary: #eee;
-  --c-ma-secondary: #8b8b8b;
-  --c-ma-btn: var(--c-ma-bg);
-  --c-ma-btn-bg: var(--c-ma-primary);
-  --c-ma-btn-bg-secondary: var(--c-ma-secondary);
-  --c-ma-btn-bg-hover: var(--c-ma-secondary);
-  --c-ma-btn-disabled: var(--c-ma-secondary);
   --c-ma-btn-bg-disabled: var(--c-ma-dark);
+  --c-ma-btn-bg-hover: #cfcfcf;
+  --c-ma-btn-bg-secondary: var(--c-ma-secondary);
+  --c-ma-btn-bg: var(--c-ma-primary);
+  --c-ma-btn-disabled: var(--c-ma-secondary);
+  --c-ma-btn: var(--c-ma-bg);
+  --c-ma-link: #00beee;
+  --c-ma-nav-bg: #343434;
+  --c-ma-nav-tab-bg: var(--c-ma-bg);
+  --c-ma-primary: #d8d8d8;
+  --c-ma-secondary: #5c5c5c;
+  --c-ma-text: #f7f7f7;
 }
 
 .ma-container {
@@ -108,6 +111,11 @@
     align-items: center;
   }
 
+  &__header-btn-container {
+    display: flex;
+    gap: .5rem;
+  }
+
   &__title {
     font-size: 1.1em;
     margin: 0 0.2rem 0 0;
@@ -122,8 +130,8 @@
   &__footer {
     display: flex;
     justify-content: end;
-    padding: 0.75rem;
-    gap: 0.3rem;
+    padding: 0.75rem 1rem;
+    gap: 0.4rem;
     border-bottom-left-radius: calc(0.3rem - 1px);
     border-bottom-right-radius: calc(0.3rem - 1px);
 
@@ -139,7 +147,7 @@
   &__extra-header {
     position: relative;
     transition: color 0.3s;
-    &:not(.ma-modal__button) {
+    &:not(.ma-btn) {
       color: var(--modal-color-header-btn);
       cursor: pointer;
     }
@@ -153,7 +161,7 @@
   &__back {
     mask-repeat: no-repeat;
     background-color: var(--c-ma-text);
-    padding: 0.55rem;
+    padding: 0.45rem;
     &:hover {
       background-color: var(--c-ma-primary);
     }
@@ -198,7 +206,7 @@
   &--secondary {
     background-color: transparent;
     color: var(--c-ma-primary);
-    border-color: var(--c-ma-primary);
+    border: none;
 
     &:hover {
       background-color: var(--c-ma-secondary);
@@ -221,6 +229,49 @@
   &::placeholder {
     color: var(--c-ma-text);
   }
+}
+
+// Nav tabs
+
+.ma-nav {
+  margin: 0rem;
+
+  &__list {
+    background-color: var(--c-ma-nav-bg);
+    border-bottom: 1px solid var(--c-ma-border);
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    display: flex;
+    list-style-type: none;
+    margin: 0rem;
+    padding: .5rem 0rem 0rem;
+  }
+
+  &__tab {
+    font-size: .8em;
+    background-color: var(--c-ma-nav-bg);
+    border: 1px solid var(--c-ma-nav-bg);
+    border-bottom: none;
+    color: var(--c-ma-primary);
+    cursor: pointer;
+    margin: 0rem 0rem -.1rem;
+    padding: .5rem 1rem;
+    text-decoration: none;
+
+    &--active {
+      background-color: var(--c-ma-nav-tab-bg);
+      border: 1px solid var(--c-ma-border);
+      border-bottom: 2px solid var(--c-ma-nav-tab-bg);
+      border-top-left-radius: .25rem;
+      border-top-right-radius: .25rem;
+      color: var(--c-ma-text);
+      cursor: default;
+    }
+  }
+}
+
+.hidden {
+  display: none;
 }
 
 // Keyframes
