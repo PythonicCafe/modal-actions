@@ -23,11 +23,15 @@
   --p-ma-btn: 0.375rem 0.75rem;
 
   // Border Radius
-  --r-ma-btn-border-radius: 0.25rem;
+  --r-ma-border-radius: 0.25rem;
+  --r-ma-btn-border-radius: var(--r-ma-broder-radius);
 
   // Icons
   --i-ma-close: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' /></svg>");
   --i-ma-back: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'/></svg>");
+
+  // Transition
+  --t-ma-time: 300ms ease-in-out;
 }
 
 .dark {
@@ -66,9 +70,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 0.25rem;
+  border-radius: var(--r-ma-border-radius);
   min-width: 200px;
-  max-height: 80%;
+  max-height: 90%;
   z-index: 9999;
   color: var(-c-ma-text);
   display: flex;
@@ -83,6 +87,7 @@
     max-width: 500px;
   }
 
+  &.modal-large,
   &--lg {
     max-width: 800px;
   }
@@ -151,12 +156,24 @@
     }
   }
 
+  .tab-content,
+  &__tab-content {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    &.hidden,
+    &--hidden {
+      display: none;
+    }
+  }
+
   // Header modal buttons and icons
 
   &__close,
   &__back,
   &__extra-header {
-    transition: color 0.3s;
+    transition: background-color var(--t-ma-time);
     &:not(.ma-btn) {
       color: var(--modal-color-header-btn);
       cursor: pointer;
@@ -199,7 +216,7 @@
 
 .ma-btn {
   background: var(--c-ma-btn-bg);
-  border-radius: var(--r-ma-btn-border-radius);
+  border-radius: var(--r-ma-border-radius);
   border-style: solid;
   border-width: 1px;
   border-color: var(--c-ma-primary);
@@ -208,6 +225,7 @@
   position: relative;
   font-weight: 600;
   font-size: 0.8em;
+  transition: background-color var(--t-ma-time), border-color var(--t-ma-time);
 
   &:hover {
     background-color: var(--c-ma-btn-bg-hover);
@@ -245,7 +263,7 @@ label {
 .ma-answer {
   padding: 0.5rem 1rem;
   margin: 0rem 0rem 1rem;
-  border-radius: 0.25rem;
+  border-radius: var(--r-ma-border-radius);
   border: 2px solid var(--c-ma-secondary) !important;
   background-color: var(--c-ma-bg);
   color: var(--c-ma-text);
@@ -272,6 +290,7 @@ label {
 
   &__tab {
     font-size: .8em;
+    font-weight: 600;
     background-color: var(--c-ma-nav-bg);
     border: 1px solid var(--c-ma-nav-bg);
     border-bottom: none;
@@ -291,10 +310,6 @@ label {
       cursor: default;
     }
   }
-}
-
-.hidden {
-  display: none;
 }
 
 // Keyframes

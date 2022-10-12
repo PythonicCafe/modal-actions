@@ -187,6 +187,10 @@ export class ModalActions {
     return this.container.querySelector(".ma-container");
   }
 
+  _getModalActive() {
+    return this._getModalContainer().querySelector(".ma-modal:not([style*='display: none'])");
+  }
+
   close() {
     let self = this;
     this._getModalContainer().style.animation = "fade-out .4s";
@@ -223,7 +227,7 @@ export class ModalActions {
       this._options.callback = callback;
 
       if (onLoad) {
-        onLoad(this._getModalContainer());
+        onLoad(self._getModalActive());
       }
 
     } else {
@@ -270,7 +274,7 @@ export class ModalActions {
 
     if (tabs) {
       const activeClass = "ma-nav__tab--active";
-      const actualModal = self._getModalContainer().querySelector(".ma-modal:not([style*='display: none'])");
+      const actualModal = self._getModalActive();
       const tabs = actualModal.querySelectorAll(".tab-content");
 
       for (let i = 0; i < tabs.length; i++) {
