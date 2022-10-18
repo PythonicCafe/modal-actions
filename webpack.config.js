@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
     },
     entry: {
       "modal-actions": "./src/index.js",
-      style: "./src/assets/scss/modal-actions.scss",
+      style: "./src/assets/scss/main.scss",
     },
     output: {
       filename: "[name].min.js",

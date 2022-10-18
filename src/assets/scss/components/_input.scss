@@ -1,0 +1,20 @@
+// Input
+
+label {
+  display: block;
+  font-size: .8em;
+  font-weight: 500;
+  padding: 1rem .1rem .5rem;
+}
+
+.ma-answer {
+  padding: 0.5rem 1rem;
+  margin: .5rem 0rem;
+  border-radius: var(--r-ma-border);
+  border: 2px solid var(--c-ma-secondary) !important;
+  background-color: var(--c-ma-bg);
+  color: var(--c-ma-text);
+  &::placeholder {
+    color: var(--c-ma-text);
+  }
+}

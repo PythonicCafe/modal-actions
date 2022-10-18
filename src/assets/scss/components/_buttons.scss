@@ -1,0 +1,39 @@
+// Buttons
+
+.ma-btn {
+  background: var(--c-ma-btn-bg);
+  border-radius: var(--r-ma-border);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--c-ma-primary);
+  color: var(--c-ma-btn);
+  padding: var(--p-ma-btn);
+  position: relative;
+  font-weight: 600;
+  font-size: 0.8em;
+  transition: background-color var(--t-ma-time), border-color var(--t-ma-time), color var(--t-ma-time);
+
+  &:hover {
+    background-color: var(--c-ma-btn-bg-hover);
+    border-color: var(--c-ma-btn-bg-hover);
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: var(--c-ma-btn-bg-disabled);
+    color: var(--c-ma-btn-disabled);
+  }
+
+  &--secondary {
+    background-color: var(--c-ma-secondary);
+    border-color: var(--c-ma-secondary);
+    color: var(--c-ma-text);
+
+    &:hover {
+      background-color: var(--c-ma-secondary);
+      color: var(--c-ma-primary);
+      border-color: var(--c-ma-secondary);
+      cursor: pointer;
+    }
+  }
+}
