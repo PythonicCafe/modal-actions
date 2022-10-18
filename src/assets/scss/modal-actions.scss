@@ -23,7 +23,7 @@
   --p-ma-btn: 0.375rem 0.75rem;
 
   // Border Radius
-  --r-ma-border-radius: 0.25rem;
+  --r-ma-border: 0.25rem;
   --r-ma-btn-border-radius: var(--r-ma-broder-radius);
 
   // Icons
@@ -70,7 +70,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: var(--r-ma-border-radius);
+  border-radius: var(--r-ma-border);
   min-width: 200px;
   max-height: 90%;
   z-index: 9999;
@@ -216,7 +216,7 @@
 
 .ma-btn {
   background: var(--c-ma-btn-bg);
-  border-radius: var(--r-ma-border-radius);
+  border-radius: var(--r-ma-border);
   border-style: solid;
   border-width: 1px;
   border-color: var(--c-ma-primary);
@@ -263,7 +263,7 @@ label {
 .ma-answer {
   padding: 0.5rem 1rem;
   margin: 0rem 0rem 1rem;
-  border-radius: var(--r-ma-border-radius);
+  border-radius: var(--r-ma-border);
   border: 2px solid var(--c-ma-secondary) !important;
   background-color: var(--c-ma-bg);
   color: var(--c-ma-text);
