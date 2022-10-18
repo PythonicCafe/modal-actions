@@ -1,21 +1,20 @@
 // Buttons
 
 .ma-btn {
-  background: var(--c-ma-btn-bg);
+  background: var(--c-ma-primary);
   border-radius: var(--r-ma-border);
   border-width: 1px;
   border-style: solid;
   border-color: var(--c-ma-primary);
-  color: var(--c-ma-btn);
+  color: var(--c-ma-on-primary);
   padding: var(--p-ma-btn);
   position: relative;
   font-weight: 600;
   font-size: 0.8em;
-  transition: background-color var(--t-ma-time), border-color var(--t-ma-time), color var(--t-ma-time);
+  transition: background-color var(--t-ma-time), border-color var(--t-ma-time), color var(--t-ma-time), filter var(--t-ma-time);
 
   &:hover {
-    background-color: var(--c-ma-btn-bg-hover);
-    border-color: var(--c-ma-btn-bg-hover);
+    filter: brightness(95%);
     cursor: pointer;
   }
 
@@ -27,13 +26,10 @@
   &--secondary {
     background-color: var(--c-ma-secondary);
     border-color: var(--c-ma-secondary);
-    color: var(--c-ma-text);
+    color: var(--c-ma-on-secondary);
 
     &:hover {
-      background-color: var(--c-ma-secondary);
-      color: var(--c-ma-primary);
-      border-color: var(--c-ma-secondary);
-      cursor: pointer;
+      filter: brightness(95%);
     }
   }
 }
