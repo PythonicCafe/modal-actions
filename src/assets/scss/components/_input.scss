@@ -11,10 +11,13 @@ label {
   padding: 0.5rem 1rem;
   margin: .5rem 0rem;
   border-radius: var(--r-ma-border);
-  border: 2px solid var(--c-ma-secondary) !important;
+  border: 1px solid var(--c-ma-input-border);
   background-color: var(--c-ma-bg);
   color: var(--c-ma-text);
-  &::placeholder {
-    color: var(--c-ma-text);
+  outline: none;
+
+
+  &:focus {
+    border-color: var(--c-ma-primary);
   }
 }

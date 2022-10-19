@@ -19,8 +19,14 @@
   }
 
   &:disabled {
-    background-color: var(--c-ma-btn-bg-disabled);
-    color: var(--c-ma-btn-disabled);
+    background-color: var(--c-ma-disabled);
+    border-color: var(--c-ma-disabled);
+    color: var(--c-ma-on-disabled);
+
+    &:hover {
+      filter: none;
+      cursor: default;
+    }
   }
 
   &--secondary {
