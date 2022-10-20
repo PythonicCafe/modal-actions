@@ -1,58 +1,58 @@
 // Theme colors
 
 :root {
-  --c-ma-bg: #fff;
-  --c-ma-border: #dee2e6;
-  --c-ma-link: #0000ee;
-  --c-ma-nav-bg: #f9faf9;
-  --c-ma-nav-tab-bg: var(--c-ma-bg);
-  --c-ma-input-border: #a6a6a6;
+  --color-bg: #fff;
+  --color-border: #dee2e6;
+  --color-link: #0000ee;
+  --color-nav-bg: #f9faf9;
+  --color-nav-tab-bg: #fff;
+  --color-input-border: #a6a6a6;
 
-  --c-ma-primary: #0085a6;
-  --c-ma-on-primary: #fff;
-  --c-ma-secondary: #f0f0ea;
-  --c-ma-on-secondary: #333;
-  --c-ma-disabled: #c7c7c7;
-  --c-ma-on-disabled: #a6a6a6;
+  --color-primary: #0085a6;
+  --color-on-primary: #fff;
+  --color-secondary: #f0f0ea;
+  --color-on-secondary: #333;
+  --color-disabled: #c7c7c7;
+  --color-on-disabled: #a6a6a6;
 
-  --c-ma-text: #333;
+  --color-text: #333;
 
   // root only vars
 
   // Font family
-  --f-ma: system-ui, -apple-system, sans-serif;
+  --font-family: system-ui, -apple-system, sans-serif;
 
   // Padding
-  --p-ma-btn: 0.375rem 0.75rem;
+  --padding-btn: 0.375rem 0.75rem;
 
   // Border Radius
-  --r-ma-border: 0.25rem;
-  --r-ma-btn-border-radius: var(--r-ma-broder-radius);
+  --border-radius: 0.25rem;
+  --border-radius-btn: 0.25rem;
 
   // Icons
-  --i-ma-close: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' /></svg>");
-  --i-ma-back: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'/></svg>");
+  --icon-close: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' /></svg>");
+  --icon-back: url("data:image/svg+xml,<svg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z'/></svg>");
 
   // Transition
-  --t-ma-time: 300ms ease-in-out;
+  --transition-time: 300ms ease-in-out;
 }
 
 // Overwrite root vars
 .dark {
-  --c-ma-bg: #3b3b3b;
-  --c-ma-border: #777a7c;
-  --c-ma-link: #00beee;
-  --c-ma-nav-bg: #343434;
-  --c-ma-nav-tab-bg: var(--c-ma-bg);
-  --c-ma-input-border: #828282;
+  --color-bg: #3b3b3b;
+  --color-border: #777a7c;
+  --color-link: #00beee;
+  --color-nav-bg: #343434;
+  --color-nav-tab-bg: #3b3b3b;
+  --color-input-border: #828282;
 
-  --c-ma-primary: #d8d8d8;
-  --c-ma-on-primary: #3b3b3b;
-  --c-ma-secondary: #5c5c5c;
-  --c-ma-on-secondary: #f7f7f7;
-  --c-ma-disabled: #747474;
-  --c-ma-on-disabled: #4f4f4f;
+  --color-primary: #d8d8d8;
+  --color-on-primary: #3b3b3b;
+  --color-secondary: #5c5c5c;
+  --color-on-secondary: #f7f7f7;
+  --color-disabled: #747474;
+  --color-on-disabled: #4f4f4f;
 
-  --c-ma-text: #f7f7f7;
+  --color-text: #f7f7f7;
 }
 
