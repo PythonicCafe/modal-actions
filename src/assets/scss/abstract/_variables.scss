@@ -5,7 +5,8 @@
   --color-border: #dee2e6;
   --color-link: #0000ee;
   --color-nav-bg: #f9faf9;
-  --color-nav-tab-bg: #fff;
+  --color-nav-tab: var(--color-primary);
+  --color-nav-tab-bg: var(--color-bg);
   --color-input-border: #a6a6a6;
 
   --color-primary: #0085a6;
@@ -43,7 +44,8 @@
   --color-border: #777a7c;
   --color-link: #00beee;
   --color-nav-bg: #343434;
-  --color-nav-tab-bg: #3b3b3b;
+  --color-nav-tab: var(--color-on-secondary);
+  --color-nav-tab-bg: var(--color-bg);
   --color-input-border: #828282;
 
   --color-primary: #d8d8d8;
