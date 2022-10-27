@@ -1,14 +1,6 @@
 // Theme colors
 
 :root {
-  --color-bg: #fff;
-  --color-border: #dee2e6;
-  --color-link: #0000ee;
-  --color-nav-bg: #f9faf9;
-  --color-nav-tab: var(--color-primary);
-  --color-nav-tab-bg: var(--color-bg);
-  --color-input-border: #a6a6a6;
-
   --color-primary: #0085a6;
   --color-on-primary: #fff;
   --color-secondary: #f0f0ea;
@@ -17,6 +9,14 @@
   --color-on-disabled: #a6a6a6;
 
   --color-text: #333;
+
+  --color-bg: #fff;
+  --color-border: #dee2e6;
+  --color-link: #0000ee;
+  --color-nav-bg: #f9faf9;
+  --color-nav-tab: var(--color-primary);
+  --color-nav-tab-bg: var(--color-bg);
+  --color-input-border: #a6a6a6;
 
   // root only vars
 
@@ -40,14 +40,6 @@
 
 // Overwrite root vars
 .dark {
-  --color-bg: #3b3b3b;
-  --color-border: #777a7c;
-  --color-link: #00beee;
-  --color-nav-bg: #343434;
-  --color-nav-tab: var(--color-on-secondary);
-  --color-nav-tab-bg: var(--color-bg);
-  --color-input-border: #828282;
-
   --color-primary: #d8d8d8;
   --color-on-primary: #3b3b3b;
   --color-secondary: #5c5c5c;
@@ -56,5 +48,12 @@
   --color-on-disabled: #4f4f4f;
 
   --color-text: #f7f7f7;
+  --color-bg: #3b3b3b;
+  --color-border: #777a7c;
+  --color-link: #00beee;
+  --color-nav-bg: #343434;
+  --color-nav-tab: var(--color-on-secondary);
+  --color-nav-tab-bg: var(--color-bg);
+  --color-input-border: #828282;
 }
 

@@ -189,14 +189,14 @@
   }
 
   &__tab {
-    font-size: .9em;
+    font-size: .8em;
     font-weight: 600;
     background-color: transparent;
     border: 1px solid transparent;
     color: var(--color-nav-tab);
     cursor: pointer;
     margin: 0rem 0rem -.1rem;
-    padding: .5rem 1rem;
+    padding: .6rem 1rem;
     text-decoration: none;
     position: relative;
 
@@ -214,12 +214,10 @@
         position: absolute;
         right: 50%;
         bottom: calc(50% - 30px);
-        width: 100%;
+        width: 99%;
         height: 12px;
         content: "";
         background-color: var(--color-nav-tab-bg);
-        border-right: thin solid var(--color-border);
-        border-left: thin solid var(--color-border);
         transform: translate(50%, -50%);
       }
     }
