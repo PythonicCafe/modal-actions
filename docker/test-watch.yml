@@ -1,0 +1,9 @@
+services:
+  app:
+    command: 
+      - /bin/sh
+      - -c
+      - |
+         yarn run build
+         yarn run lite-server &
+         yarn run test-watch

@@ -1,7 +1,9 @@
 version: "3"
 services:
   app:
-    build: .
+    build:
+      context: ./
+      dockerfile: ./docker/dev/Dockerfile
     user: '1000:1000'
     container_name: ma_development
     command: sh wrapper_script.sh
