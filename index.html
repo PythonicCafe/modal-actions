@@ -66,10 +66,10 @@
       // Log custom events raised by Modal
       const container = document.querySelector("#my-container");
       container.addEventListener("modalopened", (event) =>
-        log(`modalopened event captured! ${event.target}`)
+        log(`modalopened event captured! ${event.target}`, "event")
       );
       container.addEventListener("modalclosed", (event) =>
-        log(`modalclosed event captured! ${event.target}`)
+        log(`modalclosed event captured! ${event.target}`, "event")
       );
       window.runTest = async function () {
         log("Creating instance");

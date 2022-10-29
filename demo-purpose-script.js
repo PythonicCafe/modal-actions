@@ -1,6 +1,6 @@
-function log(text) {
+function log(text, type = "message") {
   let statusLog = document.getElementById("status-log");
-  statusLog.innerHTML += `<br> ${text}`;
+  statusLog.innerHTML += `<article class="${type}">${text}</article>`;
   statusLog.scrollTop = statusLog.scrollHeight;
 }
 
