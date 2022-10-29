@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer";
-import { sleep, gotoPage }  from "./utils.js";
+import { gotoPage }  from "./utils.js";
 
 let app = 'http://localhost:3000';
 let browser, page;
@@ -9,24 +9,24 @@ const args = [
   '--disable-setuid-sandbox'
 ]
 
-describe("Ask Question Suites", () => {
-  beforeEach(async () => { 
+describe("Ask Question Suite", () => {
+  beforeEach(async () => {
     // Setting browser
-    browser = await puppeteer.launch({args}); 
+    browser = await puppeteer.launch({args});
     // New page
     page = await browser.newPage();
     // Going to app url
     await gotoPage(app, page);
   })
 
-  afterEach(async () => { 
+  afterEach(async () => {
     // Close page
     await page.close();
     // Closer browser
     await browser.close();
   })
 
-  test('Write text in input', async () => {
+  test('Write text in input click Ok', async () => {
     await page.click('[onclick="window.askQuestion()"]');
     await page.type('input[name=ma-answer]', 'test comment', {delay: 20});
 
@@ -35,18 +35,17 @@ describe("Ask Question Suites", () => {
     await button.click()
 
     const message = await page.evaluate(
-      () => { 
+      () => {
         const messages = document.querySelectorAll('#status-log .message');
         return messages[messages.length - 1].innerHTML;
-      } 
+      }
     );
 
     expect(message)
       .toBe('Answer: {"action":"answered","answerResult":[{"fields":[{"id":"ma-answer","value":"test comment","type":"text"}]}]}')
- 
   })
 
-  test('Write text in input', async () => {
+  test('Write text in input click Cancel', async () => {
     await page.click('[onclick="window.askQuestion()"]');
     await page.type('input[name=ma-answer]', 'test comment', {delay: 20});
 
@@ -55,15 +54,14 @@ describe("Ask Question Suites", () => {
     await button.click()
 
     const message = await page.evaluate(
-      () => { 
+      () => {
         const messages = document.querySelectorAll('#status-log .message');
         return messages[messages.length - 1].innerHTML;
-      } 
+      }
     );
 
     expect(message)
       .toBe('Answer: {"action":"closed"}')
- 
+
   })
-  
 })

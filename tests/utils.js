@@ -6,7 +6,7 @@ export async function gotoPage(app, page) {
   let count = 0;
 
   while (count < 3) {
-    try { 
+    try {
       await page.goto(app, {waitUntil: 'load'});
       break;
     } catch (e) {

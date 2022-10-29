@@ -9,17 +9,17 @@ const args = [
   '--disable-setuid-sandbox'
 ]
 
-describe("Ask Yes No question Suites", () => {
-  beforeEach(async () => { 
+describe("Ask Yes No question Suite", () => {
+  beforeEach(async () => {
     // Setting browser
-    browser = await puppeteer.launch({args}); 
+    browser = await puppeteer.launch({args});
     // New page
     page = await browser.newPage();
     // Going to app url
     await gotoPage(app, page);
   })
 
-  afterEach(async () => { 
+  afterEach(async () => {
     // Close page
     await page.close();
     // Closer browser
@@ -67,7 +67,7 @@ describe("Ask Yes No question Suites", () => {
     let modal = (await page.$('.ma-modal')) || null;
     expect(modal).toBeNull();
   })
- 
+
   test('Modal click outside close modal', async () => {
     await page.click('button.ma-btn');
 
@@ -92,10 +92,10 @@ describe("Ask Yes No question Suites", () => {
     expect(modal).toBeNull();
 
     const message = await page.evaluate(
-      () => { 
+      () => {
         const messages = document.querySelectorAll('#status-log .message');
         return messages[messages.length - 1].innerHTML;
-      } 
+      }
     );
 
     expect(message).toBe('Answer: {"action":"answered","answer":"yes"}')
@@ -111,13 +111,12 @@ describe("Ask Yes No question Suites", () => {
     expect(modal).toBeNull();
 
     const message = await page.evaluate(
-      () => { 
+      () => {
         const messages = document.querySelectorAll('#status-log .message');
         return messages[messages.length - 1].innerHTML;
-      } 
+      }
     );
 
     expect(message).toBe('Answer: {"action":"answered","answer":"no"}')
   })
-  
 })
