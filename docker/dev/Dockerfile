@@ -15,11 +15,11 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 
 WORKDIR /app
 
-ADD package.json yarn.lock wrapper_script.sh /app
+COPY package.json yarn.lock wrapper_script.sh /app
 
 RUN yarn
 
-ADD ./ /app
+COPY ./ /app
 
 RUN chown -R node node_modules/
 
