@@ -1,8 +1,8 @@
 {
   "name": "modal-actions",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Simple & customizable modal with navigation, input and more in vanilla JS",
-  "private": false,
+  "private": true,
   "main": "dist/modal-actions.min.js",
   "scripts": {
     "prettier": "prettier --write .",
