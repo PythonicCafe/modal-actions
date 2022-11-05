@@ -15,9 +15,6 @@ module.exports = (env, argv) => {
       removeEmptyChunks: true,
     },
     mode: argv.mode,
-    experiments: {
-      outputModule: true,
-    },
     entry: {
       "modal-actions": "./src/index.js",
       style: "./src/assets/scss/main.scss",
@@ -25,9 +22,10 @@ module.exports = (env, argv) => {
     output: {
       filename: "[name].min.js",
       path: path.resolve(__dirname, "dist"),
-      library: {
-        type: "module",
-      },
+      library: "ModalActions",
+      libraryTarget: "umd",
+      libraryExport: "ModalActions",
+      umdNamedDefine: true,
     },
     module: {
       rules: [
@@ -37,17 +35,6 @@ module.exports = (env, argv) => {
             MiniCssExtractPlugin.loader,
             "css-loader", // Translates CSS into CommonJS
             "sass-loader", // Compiles Sass to CSS
-          ],
-        },
-        {
-          test: /\.njk$/,
-          use: [
-            {
-              loader: "simple-nunjucks-loader",
-              options: {
-                searchPaths: ["views"],
-              },
-            },
           ],
         },
       ],

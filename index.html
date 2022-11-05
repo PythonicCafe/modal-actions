@@ -59,10 +59,8 @@
     <div class="outside-container">
       <p>This is outside container and should not be blurred.</p>
     </div>
-
-    <script type="module">
-      import { ModalActions } from "./dist/modal-actions.min.js";
-
+    <script src="./dist/modal-actions.min.js"></script>
+    <script>
       // Log custom events raised by Modal
       const container = document.querySelector("#my-container");
       container.addEventListener("modalopened", (event) =>
