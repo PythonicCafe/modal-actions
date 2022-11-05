@@ -24,7 +24,7 @@ async function main() {
 
   statuslog.setAttribute("id", "status-log");
   transparentEffect.setAttribute("class", "transparentEffect");
-  statuslog.innerHTML = "<br><br><br><br><br><br>";
+  statuslog.innerHTML = "<br><br><br><br>";
   statuslog.appendChild(transparentEffect);
   document.body.insertBefore(statuslog, document.body.firstChild);
 
