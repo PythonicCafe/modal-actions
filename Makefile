@@ -20,8 +20,8 @@ prettier: ## Run prettier
 
 interact: ## Get access to /bin/sh interactive mode
 	docker compose -f docker-compose.yml -f docker/interactive.yml up -d
-	docker exec -it ta_dev /bin/sh
-	docker stop ta_dev
+	docker exec -it ma_dev /bin/sh
+	docker stop ma_dev
 
 test:	## Run tests scripts located in /tests
 	docker compose -f docker-compose.yml -f docker/test.yml up
