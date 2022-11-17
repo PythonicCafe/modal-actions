@@ -8,7 +8,7 @@
     "./src/assets/scss/*.scss",
     "./src/assets/scss/**/*.scss",
     "./dist/*.{css,js}",
-    "./demo/*.{html,css,js}"
+    "./example/*.{html,css,js}"
   ],
   "watchOptions": { "ignored": "node_modules" },
   "server": {

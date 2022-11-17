@@ -1,16 +1,20 @@
 # Modal Actions
 
-Simple & customizable modal with navigation, input, confirmation buttons, tab buttons and more.
+Simple & customizable modal with navigation, input, confirmation buttons, tab
+buttons and more.
 
 ## Development
+
 Docker container running lite-server and watching code changes
 
 ```bash
 make watch
 ```
-Results can be tested in http://localhost:3000/demo/index.html
+
+Results can be tested in [http://localhost:3000/example/index.html](http://localhost:3000/example/index.html)
 
 ## Generate bundle
+
 Local bundle pack with project name and actual project version in root folder
 
 ```bash
@@ -18,11 +22,13 @@ make bundle
 ```
 
 ## More
+
 To see all make commands
 
 ```bash
 make help
 ```
+
 ## Installation
 
 ```bash
@@ -50,6 +56,8 @@ Or directly in the HTML file
 ```js
 import ModalActions from "modal-actions";
 
-// Examples in demo/index.html
-const modal = new ModalActions("#my-container"); // only this line when included with script HTML tag
+// Only this line when included with script HTML tag
+const modal = new ModalActions("#my-container");
 ```
+
+Examples in example/index.html
