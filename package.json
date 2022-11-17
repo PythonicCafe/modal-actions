@@ -1,6 +1,6 @@
 {
   "name": "modal-actions",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Simple & customizable modal with navigation, input and more in vanilla JS",
   "private": true,
   "type": "module",

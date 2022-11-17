@@ -39,14 +39,14 @@ Or directly in the HTML file
 
 ```html
 <!-- Add to head HTML tag -->
-<link rel="stylesheet" href="./css/modal-actions.min.css" />
+<link rel="stylesheet" href="./dist/modal-actions.min.css" />
 <!-- Add to the bottom of body HTML tag -->
-<script src="./dist/modal-actions.js"></script>
+<script src="./dist/modal-actions.min.js"></script>
 
 <!-- or directly from unpkg -->
 <link
   rel="stylesheet"
-  href="https://unpkg.com/modal-actions@lastest/css/modal-actions.min.css"
+  href="https://unpkg.com/modal-actions@lastest/dist/modal-actions.min.css"
 />
 <script src="https://unpkg.com/modal-actions@latest/dist/modal-actions.min.js"></script>
 ```
