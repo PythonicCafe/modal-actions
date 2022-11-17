@@ -1,34 +1,10 @@
-import puppeteer from "puppeteer";
-import { gotoPage }  from "./utils.js";
-
-let app = 'http://localhost:3000/demo/index.html';
-let browser, page;
-
-const args = [
-  '--no-sandbox',
-  '--disable-setuid-sandbox'
-]
-
 describe("Message Extra Suite", () => {
   beforeEach(async () => {
-    // Setting browser
-    browser = await puppeteer.launch({args});
-    // New page
-    page = await browser.newPage();
-    // Going to app url
-    await gotoPage(app, page);
-
     // Open extra content
     await page.click('[onclick="window.message()"]');
     await page.click('a.ma-modal__link');
   })
 
-  afterEach(async () => {
-    // Close page
-    await page.close();
-    // Closer browser
-    await browser.close();
-  })
 
   test('Open modal extra content', async () => {
     const modalContentDisplay = await page.evaluate(

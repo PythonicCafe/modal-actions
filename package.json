@@ -29,6 +29,11 @@
     "dist/modal-actions.min.css",
     "README.md"
   ],
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./jestGlobalSetup.js"
+    ]
+  },
   "devDependencies": {
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",

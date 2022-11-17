@@ -1,31 +1,6 @@
-import puppeteer from "puppeteer";
-import { sleep, gotoPage }  from "./utils.js";
-
-let app = 'http://localhost:3000/demo/index.html';
-let browser, page;
-
-const args = [
-  '--no-sandbox',
-  '--disable-setuid-sandbox'
-]
+import { sleep } from "./utils";  // TODO: remove all sleeps use waitForSelect and waitForFunction
 
 describe("Ask Yes No question Suite", () => {
-  beforeEach(async () => {
-    // Setting browser
-    browser = await puppeteer.launch({args});
-    // New page
-    page = await browser.newPage();
-    // Going to app url
-    await gotoPage(app, page);
-  })
-
-  afterEach(async () => {
-    // Close page
-    await page.close();
-    // Closer browser
-    await browser.close();
-  })
-
   test('Open modal', async () => {
     await page.click('button.ma-btn');
     let modal = (await page.$('.ma-modal')) || null;
