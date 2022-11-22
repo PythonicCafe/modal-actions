@@ -3,7 +3,6 @@
   "version": "0.0.12",
   "description": "Simple & customizable modal with navigation, input and more in vanilla JS",
   "private": true,
-  "type": "module",
   "source": "src/index.js",
   "exports": {
     "default": "./dist/modal-actions.min.js"
