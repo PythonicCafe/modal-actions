@@ -96,7 +96,19 @@
             callback: async function (data) {
               log(`Answer: ${JSON.stringify(data)}`);
             },
-            placeholder: "Test placeholder",
+            label: "Date",
+            placeholder: "00/00/0000",
+            onLoad: function (div) {
+              div.querySelector("input[name='ma-answer']")
+                .addEventListener("input", function () {
+                  let n = this.value.replace(/\D/g, "").substring(0, 8);
+                  this.setAttribute("data-normalized", n);
+                  n = n.replace(/(\d{2})(\d)/,"$1/$2");
+                  n = n.replace(/(\d{2})(\d)/,"$1/$2");
+                  n = n.replace(/(\d{4})(\d{1,2})$/,"$1/$2");
+                  this.value = n;
+                });
+            }
           }
         );
       };
