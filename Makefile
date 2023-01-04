@@ -5,30 +5,34 @@ help:	## List all make commands
 clean:	## Clear build files
 	rm -rf dist/
 
-watch:	## Runs a lite-server with examples accessible in http://localhost:3000
-	docker compose -f docker-compose.yml -f docker/watch.yml up
+up:     ## Up container to use
+	docker compose up -d
 
-bundle: ## Make a bundle local instalable pakage '.tgz'
-	docker compose -f docker-compose.yml -f docker/build.yml up
-	yarn pack
-
-eslint: ## Run eslint
-	docker compose -f docker-compose.yml -f docker/eslint.yml up
-
-prettier: ## Run prettier
-	docker compose -f docker-compose.yml -f docker/prettier.yml up
-
-interact: ## Get access to /bin/sh interactive mode
-	docker compose -f docker-compose.yml -f docker/interactive.yml up -d
-	docker exec -it ma_dev /bin/sh
+stop:   ## Stop container
 	docker stop ma_dev
 
+watch:  ## Runs a lite-server with examples accessible in http://localhost:3000
+	docker exec -it ma_dev sh -c "yarn run watch & yarn lite-server"
+
+bundle: ## Make a bundle local instalable pakage '.tgz'
+	docker exec ma_dev sh -c "yarn run build; yarn pack"
+
+eslint: ## Run eslint
+	docker exec ma_dev sh -c "yarn run eslint"
+
+prettier: ## Run prettier
+	docker exec ma_dev sh -c "yarn run prettier"
+
+interact: ## Get access to /bin/sh interactive mode
+	docker exec -it ma_dev /bin/sh
+
 test:	## Run tests scripts located in /tests
-	docker compose -f docker-compose.yml -f docker/test.yml up
+	docker exec ma_dev sh -c "yarn run build; yarn lite-server & yarn run test"
 
 test-watch:	## Run tests and watch every update in all tests scripts of /tests
-	docker compose -f docker-compose.yml -f docker/test-watch.yml up
+	docker exec -it ma_dev sh -c "yarn run build; yarn lite-server & yarn run test-watch"
 
 release: clean bundle ## Make clean, bundle and make release with publish command
+	exit
 	yarn publish
 
